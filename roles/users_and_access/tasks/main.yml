@@ -1,0 +1,16 @@
+- name: "Create user {{ user_name }}"
+  user:
+    name: "{{ user_name }}"
+    append: yes
+    shell: /bin/bash
+#    password_lock: yes
+
+- name: "Import keys from github for {{ user_github_id }}"
+  authorized_key:
+    user: "{{ user_name }}"
+    key: "https://github.com/{{ user_github_id }}.keys"
+
+- name: "Enable passwordless sudo for {{ user_name }}"
+  copy:
+    dest: "/etc/sudoers.d/{{ user_name }}"
+    content: "{{ user_name }} ALL=(ALL:ALL) NOPASSWD: ALL"

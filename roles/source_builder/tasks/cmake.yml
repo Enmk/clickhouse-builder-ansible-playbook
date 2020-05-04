@@ -1,0 +1,21 @@
+- name: cmake - deps
+  apt:
+    package:
+      - apt-transport-https
+      - ca-certificates
+      - software-properties-common
+
+- name: cmake - add kitware repo key
+  apt_key:
+    url: https://apt.kitware.com/keys/kitware-archive-latest.asc
+    keyring:  /etc/apt/trusted.gpg.d/kitware.gpg
+
+- name: cmake - add repo
+  apt_repository:
+    repo: deb https://apt.kitware.com/ubuntu/ bionic main
+    state: present
+
+- name: cmake - install
+  apt:
+    package:
+      - cmake

@@ -1,0 +1,11 @@
+---
+  - name: ClickHouse build server
+    hosts: all
+    user: nemkov
+    vars:
+        user_name: user
+        user_github_id: "{{ user_name }}"
+    roles:
+      - users_and_access
+      - source_builder
+      - gitlab_agent

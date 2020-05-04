@@ -1,0 +1,12 @@
+# Set up dependencies required to build CH from sources:
+
+- name: "Install common build dependencies"
+  apt:
+    package:
+      - git
+      - ninja-build
+      - python3
+
+- include: cmake.yml
+- include: gcc-9.yml
+- include: clang-9.yml

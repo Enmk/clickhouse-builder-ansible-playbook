@@ -1,0 +1,9 @@
+- name: clang - add repo
+  apt_repository:
+    repo: deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-9 main
+    state: present
+
+- name: clang - install
+  apt:
+    package:
+      - clang-9

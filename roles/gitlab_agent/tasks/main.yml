@@ -1,0 +1,7 @@
+- name: Install GitLab agent
+  get_url:
+    url: https://gitlab-runner-downloads.s3.amazonaws.com/latest/deb/gitlab-runner_amd64.deb
+    dest: /
+
+- apt:
+    deb: /gitlab-runner_amd64.deb
